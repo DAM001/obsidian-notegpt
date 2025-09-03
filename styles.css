@@ -1,0 +1,61 @@
+.modal .notegpt-textarea {
+    width: 100%;
+    min-height: 8rem;
+    max-height: 30rem;
+    resize: vertical;
+}
+
+.modal .notegpt-actions {
+    display: flex;
+    gap: .5rem;
+    justify-content: flex-end;
+    margin-top: .75rem;
+}
+
+.modal details.notegpt-details {
+    margin-top: .5rem;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-m);
+    padding: .5rem .75rem;
+}
+
+.modal details.notegpt-details>summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.modal pre.notegpt-pre {
+    white-space: pre-wrap;
+    max-height: 30vh;
+    overflow: auto;
+    margin: .5rem 0 0;
+}
+
+.notegpt-dim {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--background-primary) 70%, transparent);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.notegpt-dim.active {
+    display: flex;
+}
+
+.notegpt-spinner {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 3px solid var(--background-modifier-border);
+    border-top-color: var(--text-accent);
+    animation: notegpt-spin 1s linear infinite;
+}
+
+@keyframes notegpt-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
