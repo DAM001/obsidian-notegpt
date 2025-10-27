@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 8rem;
     max-height: 30rem;
-    resize: vertical;
+    resize: vertical; 
 }
 
 .modal .notegpt-actions {

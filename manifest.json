@@ -3,7 +3,7 @@
     "name": "NoteGPT",
     "version": "0.1.0",
     "minAppVersion": "1.5.0",
-    "description": "Refactor selection with ChatGPT via right-click",
+    "description": "Refactor selection with ChatGPT via right-click ",
     "author": "DAM",
     "isDesktopOnly": false
 }

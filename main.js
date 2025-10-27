@@ -1,6 +1,6 @@
 const { Plugin, Modal, Notice } = require('obsidian');
 
-/* ---------- utils ---------- */
+/* ---------- utils ----------- */
 async function readJson(adapter, path) {
     try { return JSON.parse(await adapter.read(path)); } catch { return null; }
 }
@@ -106,12 +106,22 @@ module.exports = class NoteGPT extends Plugin {
         this.cfgPath = `${this.app.vault.configDir}/plugins/${this.manifest.id}/config.json`;
         this.cfg = await readJson(this.app.vault.adapter, this.cfgPath) || {};
 
+        // Command palette + mobile-friendly trigger
         this.addCommand({
             id: 'notegpt-refactor',
             name: 'Refactor selection with NoteGPT',
             editorCallback: (editor) => this.openRefactor(editor)
         });
 
+        // Ribbon icon (works on mobile toolbar too)
+        this.addRibbonIcon('sparkles', 'NoteGPT Refactor', () => {
+            const activeLeaf = this.app.workspace.activeLeaf;
+            const editor = activeLeaf?.view?.editor;
+            if (editor) this.openRefactor(editor);
+            else new Notice('No active editor');
+        });
+
+        // Context menu (desktop only)
         this.registerEvent(this.app.workspace.on('editor-menu', (menu, editor) => {
             const s = editor.getSelection?.() || '';
             if (!s) return;
@@ -138,5 +148,5 @@ module.exports = class NoteGPT extends Plugin {
         }).open();
     }
 
-    onunload() { }
+    onunload() {}
 };
