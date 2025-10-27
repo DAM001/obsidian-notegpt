@@ -108,9 +108,13 @@ module.exports = class NoteGPT extends Plugin {
 
         // Command palette + mobile-friendly trigger
         this.addCommand({
-            id: 'notegpt-refactor',
-            name: 'Refactor selection with NoteGPT',
-            editorCallback: (editor) => this.openRefactor(editor)
+            id: 'notegpt-refactor-selection',
+            name: 'NoteGPT: Refactor selection',
+            editorCheckCallback: (checking, editor) => {
+                const hasSel = !!editor.getSelection();
+                if (checking) return hasSel;      // show/enable only when selection exists
+                this.openRefactor(editor);        // runs with current selection
+            },
         });
 
         // Ribbon icon (works on mobile toolbar too)
@@ -148,5 +152,5 @@ module.exports = class NoteGPT extends Plugin {
         }).open();
     }
 
-    onunload() {}
+    onunload() { }
 };
