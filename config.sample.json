@@ -1,0 +1,9 @@
+{
+    "apiKey": "Your API key goes here",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-4o-mini",
+    "temperature": 0.3,
+    "max_tokens": 5000,
+    "system": "You are part of Obsidian text editor. Dont say anything extra, just what you asked for. You should refactor the given text based on a given criteria! You will overwrite the given text with your answer!",
+    "extraHeaders": { }
+}
